@@ -22,7 +22,7 @@ describe('node-catchup', () => {
 
     const results = [];
     const maxDepth = 150;
-    for(let chunkSize = 10; chunkSize <= 400; chunkSize += 5) {
+    for(let chunkSize = 10; chunkSize <= 300; chunkSize += 5) {
       let totalEvents = 0;
       let totalOperations = 0;
       const masterTimer = _util.getTimer();
