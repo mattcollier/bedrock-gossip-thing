@@ -4,6 +4,7 @@
 'use strict';
 
 const bedrock = require('bedrock');
+const {config} = bedrock;
 const database = require('bedrock-mongodb');
 const {promisify} = require('util');
 
@@ -46,4 +47,10 @@ bedrock.events.on('bedrock-mongodb.ready', async () => {
 });
 
 require('bedrock-test');
+
+// logging
+config.loggers.app.filename = '/tmp/bedrock-gossip-thing-app.log';
+config.loggers.access.filename = '/tmp/bedrock-gossip-thing-access.log';
+config.loggers.error.filename = '/tmp/bedrock-gossip-thing-error.log';
+
 bedrock.start();
