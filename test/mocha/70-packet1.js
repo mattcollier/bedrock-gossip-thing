@@ -6,7 +6,7 @@ const readline = require('readline');
 
 const axiosInstance = axios.create({
   baseURL: 'https://packet1.orgidpoc.com',
-  timeout: 5000,
+  timeout: 10000,
   httpsAgent: new https.Agent({rejectUnauthorized: false}),
   keepAlive: true,
 });
