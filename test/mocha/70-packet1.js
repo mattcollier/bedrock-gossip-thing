@@ -22,7 +22,7 @@ describe('node-catchup', () => {
 
     const results = [];
     const maxDepth = 150;
-    for(let chunkSize = 200; chunkSize <= 200; chunkSize += 0) {
+    for(let chunkSize = 10; chunkSize <= 400; chunkSize += 5) {
       let totalEvents = 0;
       let totalOperations = 0;
       const masterTimer = _util.getTimer();
@@ -60,9 +60,9 @@ describe('node-catchup', () => {
           const eventsResult = [];
           for await (const x of readInterface) {
             totalEvents++;
-            if(totalEvents % 500 === 0) {
-              console.log('Total', maxDepth, totalEvents, eventHash.length);
-            }
+            // if(totalEvents % 500 === 0) {
+            //   console.log('Total', maxDepth, totalEvents, eventHash.length);
+            // }
             const e = JSON.parse(x);
             if(e.event.type !== 'ContinuityMergeEvent') {
               if(e.event.type === 'WebLedgerOperationEvent') {
