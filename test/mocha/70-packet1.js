@@ -9,6 +9,9 @@ const axiosInstance = axios.create({
   timeout: 10000,
   httpsAgent: new https.Agent({rejectUnauthorized: false}),
   keepAlive: true,
+  headers: {
+    'Accept-Encoding': 'gzip',
+  }
 });
 
 describe('node-catchup', () => {
