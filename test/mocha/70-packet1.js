@@ -15,7 +15,7 @@ const axiosInstance = axios.create({
 });
 
 describe('node-catchup', () => {
-  it.only('works with packet1.orgidpoc.com', async function() {
+  it('works with packet1.orgidpoc.com', async function() {
     this.timeout(0);
     /* eslint-disable max-len */
     const gossipUrl = '/consensus/continuity2017/voters/z6MktncRNwn9rQHsiZx7h3N2bJmviEnrYB1His21J6mxbEgq/gossip';
@@ -81,13 +81,13 @@ describe('node-catchup', () => {
           return eventsResult;
         }));
 
-        for(const chunk of x) {
+        for(const [chunkIndex, chunk] of x.entries()) {
           for(const e of chunk) {
             const {_index, event: {proof: {verificationMethod: creator}}} = e;
             // eventHash.push(e.meta.eventHash);
             const c = creatorHeadsMap.get(creator) || {generation: 0};
             creatorHeadsMap.set(creator, {
-              eventHash: eventHash[_index],
+              eventHash: chunks[chunkIndex][_index],
               generation: c.generation + 1,
             });
           }

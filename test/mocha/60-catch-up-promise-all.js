@@ -73,13 +73,13 @@ describe('node-catchup', () => {
           return eventsResult;
         }));
 
-        for(const chunk of x) {
+        for(const [chunkIndex, chunk] of x.entries()) {
           for(const e of chunk) {
             const {_index, event: {proof: {verificationMethod: creator}}} = e;
             // eventHash.push(e.meta.eventHash);
             const c = creatorHeadsMap.get(creator) || {generation: 0};
             creatorHeadsMap.set(creator, {
-              eventHash: eventHash[_index],
+              eventHash: chunks[chunkIndex][_index],
               generation: c.generation + 1,
             });
           }
