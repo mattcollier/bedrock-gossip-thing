@@ -18,7 +18,7 @@ const axiosInstance = axios.create({
   }
 });
 
-describe.only('event processing', () => {
+describe('event processing', () => {
   it('works', async function() {
     this.timeout(0);
     const {operationHash} = await pe.go();
