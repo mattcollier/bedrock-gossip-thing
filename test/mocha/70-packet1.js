@@ -5,7 +5,8 @@ const chunk = require('lodash.chunk');
 const readline = require('readline');
 
 const axiosInstance = axios.create({
-  baseURL: 'https://packet1.orgidpoc.com',
+  baseURL: 'http://packet1.orgidpoc.com',
+  // baseURL: 'http://localhost:8088',
   timeout: 10000,
   httpsAgent: new https.Agent({rejectUnauthorized: false}),
   keepAlive: true,
@@ -15,7 +16,7 @@ const axiosInstance = axios.create({
 });
 
 describe('node-catchup', () => {
-  it('works with packet1.orgidpoc.com', async function() {
+  it.only('works with packet1.orgidpoc.com', async function() {
     this.timeout(0);
     /* eslint-disable max-len */
     const gossipUrl = '/consensus/continuity2017/voters/z6MktncRNwn9rQHsiZx7h3N2bJmviEnrYB1His21J6mxbEgq/gossip';

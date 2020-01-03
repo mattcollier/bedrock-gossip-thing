@@ -6,7 +6,7 @@ const readline = require('readline');
 const referenceOperations = require('./reference-operations');
 const _util = require('./util');
 
-describe.only('event processing pool', () => {
+describe('event processing pool', () => {
   it('works', async function() {
     this.timeout(0);
     const rl = readline.createInterface({
